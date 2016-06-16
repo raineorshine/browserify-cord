@@ -1,0 +1,30 @@
+{
+  "name": "browserify-cord",
+  "version": "0.0.0",
+  "description": "A module for generating multiple browserify bundles with gulp.'",
+  "license": "ISC",
+  "repository": "https://github.com/raineorshine/browserify-cord",
+  "author": {
+    "name": "Raine Revere",
+    "email": "raineorshine@gmail.com",
+    "url": "https://github.com/raineorshine"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "browserify",
+    "gulp",
+    "bundle"
+  ],
+  "dependencies": {
+    "browserify": "*",
+    "gulp": "*",
+    "gulp-rename": "*",
+    "vinyl-source-stream": "*",
+    "watchify": "*"
+  }
+}
