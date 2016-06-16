@@ -1,7 +1,7 @@
 {
   "name": "browserify-cord",
   "version": "0.1.0",
-  "description": "A module for generating multiple browserify bundles with gulp.'",
+  "description": "A module for generating multiple browserify bundles with gulp.",
   "license": "ISC",
   "repository": "https://github.com/raineorshine/browserify-cord",
   "author": {
