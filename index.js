@@ -2,8 +2,10 @@
 ({
   entries: any[],
   dest: string,
+  src: string,
   extname?: string,
-  log?: () => string
+  plugin?: any[],
+  log?: () => string,
 }) => { update: () => void }
 */
 
@@ -12,7 +14,6 @@ const gulp = require('gulp')
 const path = require('path')
 const rename = require('gulp-rename')
 const source = require('vinyl-source-stream')
-const watchify = require('watchify')
 
 const invoke = f => f()
 
@@ -24,21 +25,21 @@ module.exports = options => {
   const bundlers = options.entries.map(entry => {
 
     function bundle() {
-      b.bundle()
-      .on('error', options.log)
-      .pipe(source(path.basename(entry)))
-      .pipe(rename({ extname: options.extname }))
-      .pipe(gulp.dest(options.dest))
+      return b.bundle()
+        .on('error', options.log)
+        .pipe(source(path.basename(entry)))
+        .pipe(rename({ extname: options.extname }))
+        .pipe(gulp.dest(path.join(options.dest, path.dirname(entry))))
     }
 
     const b = browserify({
-      entries: [entry],
+      entries: [path.join(options.src, entry)],
       cache: {},
       packageCache: {},
-      plugin: [watchify]
+      plugin: options.plugin
     })
-    b.on('update', bundle)
-    b.on('log', options.log)
+      .on('update', bundle)
+      .on('log', options.log)
 
     return bundle
   })
