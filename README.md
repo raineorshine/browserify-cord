@@ -2,7 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/browserify-cord.svg)](https://npmjs.org/package/browserify-cord)
 [![Build Status](https://travis-ci.org/raineorshine/browserify-cord.svg?branch=master)](https://travis-ci.org/raineorshine/browserify-cord)
 
-A module for generating multiple browserify bundles with gulp.'
+A module for generating multiple browserify bundles with gulp.
 
 ## Install
 
@@ -16,8 +16,10 @@ $ npm install --save-dev browserify-cord
 import * as Cord from 'browserify-cord'
 
 const cord = Cord({
-  entries: ['./src/public/main.js'],
-  dest: './app/public/scripts'
+  entries: ['public/main.js'], // relative to 'src'
+  src: 'src'
+  dest: 'app',
+  plugin: [watchify, tsify]
 })
 
 gulp.task('js', done => {
