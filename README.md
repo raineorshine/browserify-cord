@@ -1,6 +1,5 @@
 # browserify-cord
 [![npm version](https://img.shields.io/npm/v/browserify-cord.svg)](https://npmjs.org/package/browserify-cord)
-[![Build Status](https://travis-ci.org/raineorshine/browserify-cord.svg?branch=master)](https://travis-ci.org/raineorshine/browserify-cord)
 
 A module for generating multiple browserify bundles with gulp.
 
