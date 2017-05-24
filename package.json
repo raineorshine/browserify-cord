@@ -21,9 +21,13 @@
     "bundle"
   ],
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "browserify": "*",
     "gulp": "*",
+    "gulp-babel": "^6.1.2",
     "gulp-rename": "*",
+    "gulp-uglify": "^3.0.0",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "*",
     "watchify": "*"
   }

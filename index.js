@@ -14,6 +14,9 @@ const gulp = require('gulp')
 const path = require('path')
 const rename = require('gulp-rename')
 const source = require('vinyl-source-stream')
+const buffer = require('vinyl-buffer')
+const uglify = require('gulp-uglify')
+const babel = require('gulp-babel')
 
 const invoke = f => f()
 
@@ -26,8 +29,13 @@ module.exports = options => {
 
     function bundle() {
       return b.bundle()
-        .on('error', options.log)
         .pipe(source(path.basename(entry)))
+        .pipe(buffer())
+        .pipe(babel({
+          presets: ['es2015']
+        }))
+        .pipe(uglify())
+        .on('error', options.log)
         .pipe(rename({ extname: options.extname }))
         .pipe(gulp.dest(path.join(options.dest, path.dirname(entry))))
     }
@@ -36,7 +44,8 @@ module.exports = options => {
       entries: [path.join(options.src, entry)],
       cache: {},
       packageCache: {},
-      plugin: options.plugin
+      plugin: options.plugin,
+      debug: true
     })
       .on('update', bundle)
       .on('log', options.log)
